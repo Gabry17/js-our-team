@@ -33,17 +33,22 @@ const team = [
 
 //STAMPA IN CONSOLE LE PROPRIETA DI TEAM
 //prendo elementi dall array
+
+const container = document.querySelector('.container');
+
 for(let i = 0; i < team.length; i++){
     const thisElem = team[i];
-    // console.log(thisElem);
     //scorro oggetti interni con ciclo for in
+    let div = document.createElement('div');
+    div.classList.add('mg-top');
     for(let key in thisElem){
         //stampo le proprietà in console
-        console.log(key,thisElem[key]);
+        //console.log(key,thisElem[key]);
+        
+        div.innerHTML += `${key}: ${thisElem[key]} <br>`;
+        container.appendChild(div);
     }
+    console.log(div);
+
 }
 
-
-//OUTPUT PROPRIETA DI TEAM
-//seleziono elemento html
-//inserisco info al suo interno
