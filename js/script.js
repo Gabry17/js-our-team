@@ -31,6 +31,27 @@ const team = [
     },
 ];
 
+//al click generare un altro user
+const btn = document.querySelector('button');
+
+//console.log(team);
+btn.addEventListener('click', function(){
+    //al click creo nuovo oggetto con valori e lo inserisco nell array
+    const inputName = document.getElementById('name').value;
+    const inputRole = document.getElementById('role').value;
+    const inputImage = document.getElementById('image').value;
+    
+    let newObj = {
+        name: `${inputName}`,
+        role: `${inputRole}`,
+        image: `${inputImage}`
+    }
+
+    team.push(newObj);
+    console.log(team);
+
+});
+
 //STAMPA IN CONSOLE LE PROPRIETA DI TEAM
 //prendo elementi dall array
 
@@ -39,16 +60,25 @@ const container = document.querySelector('.container');
 for(let i = 0; i < team.length; i++){
     const thisElem = team[i];
     //scorro oggetti interni con ciclo for in
+    //OUTPUT
+    //creo elementi
     let div = document.createElement('div');
-    div.classList.add('mg-top');
+    let divImage = document.createElement('div');
     for(let key in thisElem){
-        //stampo le proprietà in console
-        //console.log(key,thisElem[key]);
-        
-        div.innerHTML += `${key}: ${thisElem[key]} <br>`;
-        container.appendChild(div);
-    }
-    console.log(div);
+        //stampare e visualizzare le proprietà nel dom
 
+        if(key !== "image"){
+            console.log(key,thisElem[key]);
+            div.innerHTML += `<p>${key}: ${thisElem[key]}</p>`;
+        }
+
+        //divImage.innerHTML = `<img src="img/thisElem.image">`;
+        
+        container.appendChild(divImage);
+        container.appendChild(div);
+        
+    }
+    
+    
 }
 
