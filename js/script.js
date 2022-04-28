@@ -40,16 +40,16 @@ btn.addEventListener('click', function(){
     const inputName = document.getElementById('name').value;
     const inputRole = document.getElementById('role').value;
     const inputImage = document.getElementById('image').value;
-    
+
     let newObj = {
-        name: `${inputName}`,
-        role: `${inputRole}`,
-        image: `${inputImage}`
+        name: inputName,
+        role: inputRole,
+        image: inputImage
     }
 
     team.push(newObj);
     console.log(team);
-
+    print();
 });
 
 //STAMPA IN CONSOLE LE PROPRIETA DI TEAM
@@ -57,28 +57,31 @@ btn.addEventListener('click', function(){
 
 const container = document.querySelector('.container');
 
-for(let i = 0; i < team.length; i++){
-    const thisElem = team[i];
-    //scorro oggetti interni con ciclo for in
-    //OUTPUT
-    //creo elementi
-    let div = document.createElement('div');
-    let divImage = document.createElement('div');
-    for(let key in thisElem){
-        //stampare e visualizzare le proprietà nel dom
+print();
+function print() {
+    container.innerHTML = '';
+    for(let i = 0; i < team.length; i++){
+        const thisElem = team[i];
+        //scorro oggetti interni con ciclo for in
+        //OUTPUT
+        //creo elementi
+        let div = document.createElement('div');
+        let divImage = document.createElement('div');
+        for(let key in thisElem){
+            //stampare e visualizzare le proprietà nel dom
 
-        if(key !== "image"){
-            console.log(key,thisElem[key]);
-            div.innerHTML += `<p>${key}: ${thisElem[key]}</p>`;
-        }
+            if(key !== "image"){
+                console.log(key,thisElem[key]);
+                div.innerHTML += `<p>${key}: ${thisElem[key]}</p>`;
+            }
 
-        //divImage.innerHTML = `<img src="img/thisElem.image">`;
-        
-        container.appendChild(divImage);
-        container.appendChild(div);
-        
+            if(key === "image" && thisElem.image.length){
+                divImage.innerHTML = `<img src="img/${thisElem.image}">`;
+            }
+
+            container.appendChild(divImage);
+            container.appendChild(div);
+            
+        }    
     }
-    
-    
 }
-
