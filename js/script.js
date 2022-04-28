@@ -31,3 +31,19 @@ const team = [
     },
 ];
 
+//STAMPA IN CONSOLE LE PROPRIETA DI TEAM
+//prendo elementi dall array
+for(let i = 0; i < team.length; i++){
+    const thisElem = team[i];
+    // console.log(thisElem);
+    //scorro oggetti interni con ciclo for in
+    for(let key in thisElem){
+        //stampo le proprietà in console
+        console.log(key,thisElem[key]);
+    }
+}
+
+
+//OUTPUT PROPRIETA DI TEAM
+//seleziono elemento html
+//inserisco info al suo interno
